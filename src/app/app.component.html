@@ -1,0 +1,43 @@
+<h2>{{name}}</h2>
+<hr>
+<h3>Two way binding</h3>
+<div>
+  <input [(ngModel)]="userName"/>
+  <label>{{userName}}</label>
+</div>
+<hr>
+<h3>String Interpolation</h3>
+<div>
+  <p>Hi , My name is {{userName}}</p>
+</div>
+<hr>
+<h3>Property Binding</h3>
+<div>
+  <p [title]="userName.indexOf('Pant')!==-1 ? 'Hurrey ! You enter right text' : 'Please enter (Pant)'">Below text and its title property is only availabe if value of input box contains 'Pant'.</p>
+  <p *ngIf="userName.indexOf('Pant')!==-1" style="color:red">So, You might be intreseted in 'Pant'. Here is the description, It simply means Mukesh Pant:)
+     <br>All this happen with *ngIf and property binding.</p>
+</div>
+<hr>
+<h3>Event Binding</h3>
+<div>
+  <input type="text" #wish>
+  <button (click)="addWishList(wish)">Add to My Wish List</button>
+  <ul>
+    <li *ngFor="let w of wishes">{{w}}</li>  
+  </ul>
+</div>
+<hr>
+<h3>Child Component</h3>
+<p>Showing Actor and Actoress with same user-component(as a child) passing data to the component @Input</p>
+<div>
+  <div style="height:500px;width: 50%;float:left;background: black;color:white">
+      <input type="text" #actor>
+      <button (click)="addActor(actor)">Add Actor</button>
+      <user-list [users]="actorList"></user-list>
+  </div>
+  <div style="height:500px;width: 50%;float:left;background: pink;">
+      <input type="text" #wish>
+      <button (click)="addActoress(wish)">Add Actoress</button>
+      <user-list [users]="actoressList"></user-list>
+  </div>
+</div>
